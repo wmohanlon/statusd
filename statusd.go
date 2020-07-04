@@ -98,7 +98,11 @@ func update_status(current *status) {
 	if e == -1 {
 		e = strings.Index(wg, "P-t-P")
 	}
-	current.Wg_address = strings.TrimSpace(wg[p+5 : e])
+	if e == -1 {
+		current.Wg_address = "no_wireguard"
+	} else {
+		current.Wg_address = strings.TrimSpace(wg[p+5 : e])
+	}
 }
 
 func fetch_ext_ipaddr() string {
