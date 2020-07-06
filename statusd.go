@@ -82,7 +82,7 @@ func do_an_update(client MQTT.Client) {
 		fmt.Printf("Error: %s", err)
 	}
 	fmt.Println(string(b))
-	client.Publish(pubtopic, 1, false, string(b))
+	client.Publish(pubtopic, 0, true, string(b))
 }
 
 func update_status(current *status) {
