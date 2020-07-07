@@ -28,6 +28,8 @@ type status struct {
 	Ip_address string `json:"ip_address"`
 	Uptime     string `json:"uptime"`
 	Wg_address string `json:"wg_address"`
+	Date       string `json:"date"`
+	Hostname   string `json:"hostname"`
 }
 
 var curr_status status
@@ -103,6 +105,9 @@ func update_status(current *status) {
 	} else {
 		current.Wg_address = strings.TrimSpace(wg[p+5 : e])
 	}
+	current.Hostname, _ = os.Hostname()
+	currentTime := time.Now()
+	current.Date = currentTime.String()
 }
 
 func fetch_ext_ipaddr() string {
