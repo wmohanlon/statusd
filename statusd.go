@@ -48,6 +48,8 @@ func main() {
 
 	opts := MQTT.NewClientOptions().AddBroker("tcp://willymartini.com:1883")
 	opts.SetClientID("statusd-" + hostname)
+	opts.SetUsername("wmo")
+	opts.SetPassword("blowme")
 	opts.SetDefaultPublishHandler(f)
 	topic := "statusd/incoming"
 
