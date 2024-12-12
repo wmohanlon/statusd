@@ -97,7 +97,7 @@ func update_status(current *status) {
 	cmd = exec.Command("ifconfig", "-a")
     out, _ = cmd.CombinedOutput()
     fmt.Println(string(out))
-	cmd = exec.Command("ifconfig", "wg0")
+	cmd = exec.Command("ifconfig", "tailscale0")
 	out, _ = cmd.CombinedOutput()
 	wg := string(out)
 	p := strings.Index(wg, "inet ")
