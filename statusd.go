@@ -94,7 +94,7 @@ func update_status(current *status) {
 	cmd := exec.Command("uptime")
 	out, _ := cmd.CombinedOutput()
 	current.Uptime = string(out)
-	cmd = exec.Command("/sbin/ifconfig", "-a")
+	cmd = exec.Command("ifconfig", "-a")
     out, _ = cmd.CombinedOutput()
     fmt.Println(string(out))
 	cmd = exec.Command("ifconfig", "wg0")
