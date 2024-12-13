@@ -97,19 +97,10 @@ func update_status(current *status) {
 	cmd = exec.Command("ifconfig", "-a")
     out, _ = cmd.CombinedOutput()
     fmt.Println(string(out))
-	cmd = exec.Command("ifconfig", "tailscale0")
+	cmd = exec.Command("hostname", "-i")
 	out, _ = cmd.CombinedOutput()
 	wg := string(out)
-	p := strings.Index(wg, "inet ")
-	e := strings.Index(wg, "Mask")
-	if e == -1 {
-		e = strings.Index(wg, "P-t-P")
-	}
-	if e == -1 {
-		current.Wg_address = "no_wireguard"
-	} else {
-		current.Wg_address = strings.TrimSpace(wg[p+5 : e])
-	}
+	current.Wg_address = wg
 	current.Hostname, _ = os.Hostname()
 	currentTime := time.Now()
 	current.Date = currentTime.String()
