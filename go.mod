@@ -1,6 +1,6 @@
 module github.com/wmohanlon/statusd
 
-go 1.23.4
+go 1.23
 
 require github.com/eclipse/paho.mqtt.golang v1.5.0
 
