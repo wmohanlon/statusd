@@ -101,7 +101,7 @@ func update_status(current *status) {
 	out, _ = cmd.CombinedOutput()
 	wg := string(out)
 	p := strings.Index(wg, "inet ")
-	e := strings.Index(wg, "netmask")
+	e := strings.Index(wg, "Mask")
 	if e == -1 {
 		e = strings.Index(wg, "P-t-P")
 	}
